@@ -9,9 +9,13 @@
   <!-- AOS Library for scroll animations -->
   <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet" />
   <style>
-    /* Дополнительные анимации */
-    .animate-pulse-slow {
-      animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    /* Пульсирующая анимация масштабирования для кнопки */
+    @keyframes pulse-scale {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .pulse-button {
+      animation: pulse-scale 1.5s ease-in-out infinite;
     }
   </style>
 </head>
@@ -31,14 +35,14 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero bg-gradient-to-r from-red-100 to-red-50 h-screen flex items-center">
+  <section class="hero bg-gradient-to-r from-red-100 to-red-50 min-h-screen flex items-center">
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-6">
       <div data-aos="fade-right">
         <h2 class="text-5xl font-extrabold text-red-600 mb-4">
           Рецепты по фото продуктов
         </h2>
         <p class="text-lg text-gray-700 mb-6">
-          Наш ИИ-Бот анализирует фото ваших ингредиентов и предлагает множество вкусных рецептов<br>в считанные секунды.
+          Загружайте фото ингредиентов, а ИИ предложит множество вкусных рецептов за секунды.
         </p>
         <a href="#group" class="inline-block bg-red-500 text-white px-6 py-3 rounded-lg shadow hover:bg-red-600 transition">
           Присоединиться к сообществу
@@ -87,9 +91,11 @@
       <p data-aos="fade-up" data-aos-delay="100" class="text-gray-700 mb-6">
         Участвуйте в обсуждениях, делитесь рецептами и получайте обратную связь.
       </p>
-      <a href="https://t.me/Xozayka_top" data-aos="zoom-in" data-aos-delay="200" class="inline-block bg-red-500 text-white px-8 py-4 rounded-lg shadow hover:bg-red-600 transition">
-        Перейти в Telegram
-      </a>
+      <div class="mt-6">
+        <a href="https://t.me/Xozayka_top" data-aos="zoom-in" data-aos-delay="200" class="block bg-red-500 text-white px-8 py-4 rounded-lg shadow hover:bg-red-600 transition pulse-button mx-auto w-max">
+          Перейти в Telegram
+        </a>
+      </div>
     </div>
   </section>
 
@@ -103,10 +109,7 @@
   <!-- AOS Initialization -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 800,
-      once: true
-    });
+    AOS.init({ duration: 800, once: true });
   </script>
 </body>
 </html>
